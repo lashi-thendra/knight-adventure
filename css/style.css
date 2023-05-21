@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-size: cover;
+    overflow: hidden;
+    background-color: skyblue;
+}
+
+div {
+    position: absolute;
+    height:400px;
+    width: 400px;
+    background-image: url("/img/tree.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* background-color: aqua; */
+    /* border: 1px solid black; */
+    /* overflow: visible; */
+}
+
+.back{
+    top: 50px;
+}
+
+.mid{
+    top: 100px;
+}
+
+.font{
+    top: 150px;
+}
+
+#sun{
+    background-image: url(/img/sun.png);
+    background-size: contain;
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    transform: translateY(-30%);
+}
+
+#ground{
+    width: 100vw;
+    background-color: burlywood;
+    top: 350px;
+}
+
+#forest{
+    width: 100vw;
+    height: 250px;
+    z-index: -1;
+    top: 200px;
+    background-image: url(/img/forest.png);
+    background-repeat: repeat-x;
+    background-size: contain;
+    /* background-color: black; */
+}
+
+
+
+
+
