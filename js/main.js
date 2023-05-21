@@ -20,7 +20,8 @@ for (let i = 0; i < 3; i++) {
         treeNumber = Math.random()*6 + 1;
         element.style.backgroundImage = `url(/img/tree/${Math.floor(treeNumber)}.png)`;
 
-        element.style.transform =`scale(${0.9 + i*0.1})`
+        element.style.transform =`scale(${0.9 + i*0.2})`
+        element.style.filter =  `blur(${0.6*(3-i)}px)`;
 
         document.body.append(element)
     }

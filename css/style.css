@@ -5,7 +5,7 @@
 body {
     background-size: cover;
     overflow: hidden;
-    background-color: skyblue;
+    background-color: rgb(28, 137, 180);
 }
 
 div {
@@ -16,9 +16,8 @@ div {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    /* background-color: aqua; */
-    /* border: 1px solid black; */
-    /* overflow: visible; */
+    border: 1px solid black;
+    
 }
 
 .back{
@@ -47,7 +46,7 @@ div {
 
 #ground{
     width: 100vw;
-    background-color: burlywood;
+    background-color: rgb(73, 42, 2);
     top: 350px;
 }
 
