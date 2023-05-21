@@ -49,12 +49,13 @@ div {
     width: 100vw;
     background-color: rgb(73, 42, 2);
     top: 350px;
+    z-index: -1;
 }
 
-#forest{
+.forest{
     width: 100vw;
     height: 250px;
-    z-index: -1;
+    z-index: -2;
     top: 200px;
     background-image: url(/img/forest.png);
     background-repeat: repeat-x;
@@ -72,6 +73,14 @@ div {
     /* border: 1px solid black; */
     z-index: 1;
     /* transform: scaleX(-1); */
+}
+
+#front-forest{
+    /* background-color: yellow; */
+    z-index: -1;
+    width: 150vw;
+    left: -100px;
+    top: 130px;
 }
 
 

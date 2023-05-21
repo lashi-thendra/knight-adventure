@@ -15,13 +15,13 @@ let attachBool = false;
 
 let knight = document.getElementById('knight');
 
-for (let i = 0; i < 3; i++) {
+for (let i = 0 ; i < 3; i++) {
     classx = classes[i];
     for (let j = 0; j < 6; j++) {
         
         element = document.createElement('div');
         element.classList.add(classx);
-        element.style.top = 90 + 10*i + "px";
+        element.style.top = 100 + 5*i + "px";
 
         leftx =  ((i===1)? 300: 0 ) + (200 + i*50 )*j;
         element.style.left = leftx + "px";
@@ -159,3 +159,4 @@ setInterval(()=>{
     if(runBool) run();
 },20);
 
+git 
