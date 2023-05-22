@@ -12,7 +12,7 @@ div {
     position: absolute;
     height:300px;
     width: 300px;
-    background-image: url("/img/tree.png");
+    background-image: url("img/tree.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -33,7 +33,7 @@ div {
 }
 
 #sun{
-    background-image: url(/img/sun.png);
+    background-image: url(img/sun.png);
     background-size: contain;
     height: 200px;
     width: 200px;
@@ -57,7 +57,7 @@ div {
     height: 250px;
     z-index: -2;
     top: 200px;
-    background-image: url(/img/forest.png);
+    background-image: url(img/forest.png);
     background-repeat: repeat-x;
     background-size: contain;
     /* background-color: black; */
@@ -68,7 +68,6 @@ div {
     width: 150px;
     top: 350px;
     left: 400px;
-    background-image: url(/img/knight/freeknight/png/Attack\ \(8\).png);
     background-size: cover;
     /* border: 1px solid black; */
     z-index: 1;

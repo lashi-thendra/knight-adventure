@@ -15,9 +15,12 @@ let attachBool = false;
 
 let knight = document.getElementById('knight');
 
+let sun = document.getElementById('sun');
+// sun.style.backgroundImage('img/sun.png');
+
 for (let i = 0 ; i < 3; i++) {
     classx = classes[i];
-    for (let j = 0; j < 6; j++) {
+    for (let j = 0; j < 9 -i; j++) {
         
         element = document.createElement('div');
         element.classList.add(classx);
@@ -28,7 +31,7 @@ for (let i = 0 ; i < 3; i++) {
         
 
         treeNumber = Math.random()*6 + 1;
-        element.style.backgroundImage = `url(/img/tree/${Math.floor(treeNumber)}.png)`;
+        element.style.backgroundImage = `url(img/tree/${Math.floor(treeNumber)}.png)`;
 
         element.style.transform =`scale(${0.9 + i*0.2})`
         // element.style.filter =  `blur(${0.6*(3-i)}px)`;
@@ -46,7 +49,7 @@ let backTrees = Array.from(document.getElementsByClassName('back'));
 
 function moveTree(){
     frontTrees.forEach(element => {
-        element.style.left = element.offsetLeft - 5 + "px";
+        element.style.left = element.offsetLeft - 3 + "px";
         element.replaceTree();
     });
     midTrees.forEach(element => {
