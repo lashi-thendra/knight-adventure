@@ -19,8 +19,8 @@ let sun = document.getElementById('sun');
 let forests = Array.from(document.querySelectorAll(".forest"));
 // sun.style.backgroundImage('img/sun.png');
 
-sun.style.backgroundImage = "img/sun.png";
-forests.forEach(elem => elem.style.backgroundImage = 'img/forest.1.png');
+sun.style.backgroundImage = "url(img/sun.png)";
+forests.forEach(elem => elem.style.backgroundImage = 'url(img/forest.1.png)');
 
 
 for (let i = 0 ; i < 3; i++) {
