@@ -155,7 +155,7 @@ setInterval(()=>{
     // if(count % 5 != 0) return;
     if(kinghtImageNumber === 10) kinghtImageNumber =1;
     knight.style.backgroundImage = 
-    `url('img/knight/freeknight/png/${knightAction} (${kinghtImageNumber}).png')`;
+    `url('img/knight/${knightAction} (${kinghtImageNumber}).png')`;
     if(count % 3 === 0) kinghtImageNumber++;
     if(count === 10) count = 0;
     if(moveTreeBool) moveTree();
