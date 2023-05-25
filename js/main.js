@@ -16,7 +16,7 @@ let attachBool = false;
 let knight = document.getElementById('knight');
 
 let sun = document.getElementById('sun');
-let forests = document.querySelectorAll(".forest");
+let forests = Array.from(document.querySelectorAll(".forest"));
 // sun.style.backgroundImage('img/sun.png');
 
 sun.style.backgroundImage = "img/sun.png";
