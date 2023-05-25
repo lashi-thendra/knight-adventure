@@ -57,7 +57,7 @@ div {
     height: 250px;
     z-index: -2;
     top: 200px;
-    background-image: url(/img/forest.1.png);
+    background-image: url(img/forest.1.png);
     background-repeat: repeat-x;
     background-size: contain;
     /* background-color: black; */

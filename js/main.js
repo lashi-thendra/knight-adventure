@@ -16,7 +16,12 @@ let attachBool = false;
 let knight = document.getElementById('knight');
 
 let sun = document.getElementById('sun');
+let forests = document.querySelector(".forest");
 // sun.style.backgroundImage('img/sun.png');
+
+sun.style.backgroundImage = "img/sun.png";
+forests.forEach(elem => elem.style.backgroundImage = 'img/forest.1.png');
+
 
 for (let i = 0 ; i < 3; i++) {
     classx = classes[i];
