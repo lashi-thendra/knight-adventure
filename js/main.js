@@ -5,48 +5,63 @@ let leftx = 0;
 let classes = ["back", "mid", "front"];
 let classx = 0;
 let treeNumber = 1;
-let moveTreeBool = false;
+
 let runBool = false;
 let knightAction = 'Idle';
 let runFoward = true;
 let dx = 10;
 let jumpBool = false;
 let attachBool = false;
+let pitCount = 2;
+let moveEnemies = function(){};
+let points = 0;
+let kinghtImageNumber = 1;
+let count = 0;
+let isDead = false;
+
 
 let knight = document.getElementById('knight');
 
-let sun = document.getElementById('sun');
 let forests = Array.from(document.querySelectorAll(".forest"));
-// sun.style.backgroundImage('img/sun.png');
-
-sun.style.backgroundImage = `url(img/sun.png)`;
-forests.forEach(elem => elem.style.backgroundImage = `url(img/forest.1.png)`);
 
 
 for (let i = 0 ; i < 3; i++) {
     classx = classes[i];
-    for (let j = 0; j < 9 -i; j++) {
+    for (let j = 0; j < 6 -i; j++) {
         
         element = document.createElement('div');
         element.classList.add(classx);
-        element.style.top = 100 + 5*i + "px";
+        element.classList.add("tree");
+        element.style.bottom = 120 + "px";
 
         leftx =  ((i===1)? 300: 0 ) + (200 + i*50 )*j;
         element.style.left = leftx + "px";
+
+        treeNumber = Math.floor(Math.random()*2) + 7;
+        element.style.backgroundImage = `url(img/Object/obj${treeNumber}.png)`;
         
 
-        treeNumber = Math.random()*6 + 1;
-        element.style.backgroundImage = `url(img/tree/${Math.floor(treeNumber)}.1.png)`;
-
-        element.style.transform =`scale(${0.9 + i*0.2})`
-        // element.style.filter =  `blur(${0.6*(3-i)}px)`;
-
+        
         element.replaceTree = replaceTree;
 
         document.body.append(element)
     }
     leftx = -100 + i*250;
 }
+
+let groundElems = []
+for (let index = 0; index < 15; index++) {
+        let groundElem = document.createElement('div');
+        groundElem.classList.add('ground');
+        groundElem.style.bottom = 0;
+        groundElem.style.left = 100*index + "px";
+        groundElem.innerText = index;
+        groundElem.replaceGround = replaceGround;
+        document.body.append(groundElem);
+        groundElems.push(groundElem);
+}
+
+
 
 let frontTrees = Array.from(document.getElementsByClassName('front'));
 let midTrees = Array.from(document.getElementsByClassName('mid'));
@@ -73,12 +88,32 @@ function replaceTree(){
     } 
 }
 
+function moveGround(){
+    groundElems.forEach(elem => {
+        elem.style.left = elem.offsetLeft - 3 + "px";
+        elem.replaceGround();
+    })
+}
+
+function replaceGround(){
+    if(this.offsetLeft <= -100){
+        let lastGround = groundElems[14];
+        this.style.left = lastGround.offsetLeft + 120 + "px";
+        groundElems.push(this);
+        groundElems.shift();
+    }
+}
+
 function run(){
-    if(knight.offsetLeft >= innerWidth/2){
+    if(knightAction === "Attack") return;
+    if(knight.offsetLeft >= innerWidth/2 - 100){
         moveTree();
+        moveGround();
+        moveEnemies();
         dx = 0;
     }else{
         dx = 10;
+        moveEnemy = false;
     }
 
     if(runFoward){
@@ -88,20 +123,17 @@ function run(){
     else knight.style.left = knight.offsetLeft - 10 + "px";
 }
 
-function attack(){
-
-}
-
 let angle = 0;
+let dy = 2;
 let originalOffsetTop = knight.offsetTop ;
 function jump(){
-    knight.style.top = originalOffsetTop - 200*Math.sin(angle/180*Math.PI) + "px"; 
-    angle += 5;
+    knight.style.top = originalOffsetTop - 350*Math.sin(angle/180*Math.PI) + "px"; 
     if(angle >= 180){
         angle = 0;
         jumpBool = false;
         knightAction = runBool? "Run":"Idle";
     }
+    angle += 2;
 }
 
 addEventListener('keydown', (eventData)=>{
@@ -147,24 +179,24 @@ addEventListener('keypress', (eventData)=>{
 });
 
 
+let mainInterval = setInterval(()=>{
 
-let kinghtImageNumber = 1;
-let count = 0;
-setInterval(()=>{
     count++;
     // if(count % 5 != 0) return;
     if(kinghtImageNumber === 10) kinghtImageNumber =1;
     knight.style.backgroundImage = 
     `url('img/knight/${knightAction} (${kinghtImageNumber}).png')`;
-    if(count % 3 === 0) kinghtImageNumber++;
+    if(angle < 30){
+        if(count % 3 === 0) kinghtImageNumber++;
+    }
     if(count === 10) count = 0;
-    if(moveTreeBool) moveTree();
     if(jumpBool) jump();
     if(attachBool){
         attack();
         if(angle === 0) return;
     } 
-    if(runBool) run();
+    if(runBool && !isDead) run();
 },20);
+
 
 

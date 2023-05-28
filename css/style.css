@@ -3,85 +3,72 @@
 }
 
 body {
+    background-image: url(/img/BG/BG.png);
+    background-position-y: -300px;
     background-size: cover;
     overflow: hidden;
-    background-color: rgb(28, 137, 180);
 }
 
-div {
+.tree {
     position: absolute;
-    height:300px;
-    width: 300px;
-   /* background-image: url("img/tree.png");*/
-    background-size: contain;
+    height:400px;
+    width: 400px;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    /* border: 1px solid black; */
     
 }
 
-.back{
-    top: 50px;
+.ground{
+    background-image :url('/img/Tiles/2.png');
+    height : 120px;
+    width : 120px;
+    position : absolute;
+    color : white;
 }
 
-.mid{
-    top: 100px;
-}
-
-.font{
-    top: 150px;
-}
-
-#sun{
-  /*  background-image: url(img/sun.png);*/
+.enemy{
+    height: 150px;
+    width: 150px;
+    position: absolute;
     background-size: contain;
-    height: 200px;
-    width: 200px;
-    /* border: 1px solid black; */
-    left: 0;
-    right: 0;
-    top: 50px;
-    margin: 0 auto;
-    transform: translateY(-30%);
-}
-
-#ground{
-    width: 100vw;
-    background-color: rgb(73, 42, 2);
-    top: 350px;
-    z-index: -1;
-}
-
-.forest{
-    width: 100vw;
-    height: 250px;
-    z-index: -2;
-    top: 200px;
-   /* background-image: url(img/forest.1.png);*/
-    background-repeat: repeat-x;
-    background-size: contain;
-    /* background-color: black; */
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #knight{
+    position: absolute;
     height: 200px;
-    width: 150px;
-    top: 350px;
+    width: 200px;
+    bottom : 100px;
     left: 400px;
-    background-size: cover;
-    /* border: 1px solid black; */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     z-index: 1;
-    /* transform: scaleX(-1); */
 }
 
-#front-forest{
-    /* background-color: yellow; */
-    z-index: -1;
-    width: 150vw;
-    left: -100px;
-    top: 130px;
+#score{
+    display: block;
+    position: absolute;
+    z-index: 20;
+    margin: 20px;
+    font-size: 30px;
+    font-family: Ubuntu, sans-serif;
 }
 
+#modal-button{
+    display: none;
+}
+
+ul{
+    position: relative;
+    top: 50px;
+    z-index: 20;
+    left: 20px;
+    font-family: Ubuntu, sans-serif;
+    font-size: 20px;
+}
 
 
 
