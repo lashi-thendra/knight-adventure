@@ -192,7 +192,6 @@ let mainInterval = setInterval(()=>{
     if(count === 10) count = 0;
     if(jumpBool) jump();
     if(attachBool){
-        attack();
         if(angle === 0) return;
     } 
     if(runBool && !isDead) run();
