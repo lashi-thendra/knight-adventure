@@ -3,7 +3,7 @@
 }
 
 body {
-    background-image: url(img/BG/BG.png);
+    background-image: url(../img/BG/BG.png);
     background-position-y: -300px;
     background-size: cover;
     overflow: hidden;
@@ -20,7 +20,7 @@ body {
 }
 
 .ground{
-    background-image :url('img/Tiles/2.png');
+    background-image :url(../img/Tiles/2.png);
     height : 120px;
     width : 120px;
     position : absolute;
