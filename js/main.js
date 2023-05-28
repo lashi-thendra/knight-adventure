@@ -55,7 +55,6 @@ for (let index = 0; index < 15; index++) {
         groundElem.classList.add('ground');
         groundElem.style.bottom = 0;
         groundElem.style.left = 100*index + "px";
-        groundElem.innerText = index;
         groundElem.replaceGround = replaceGround;
         document.body.append(groundElem);
         groundElems.push(groundElem);
