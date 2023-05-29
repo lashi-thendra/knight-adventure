@@ -87,13 +87,23 @@ function killKnightAndPlaceOnGround(){
     kinghtImageNumber = 0;
     knight.style.transform = "scale(1)";
     knight.style.bottom = "80px";
+    let isFalling = true;
+    let isDying = true;
     let intervalId = setInterval(()=>{
         knight.style.bottom = "80px";
         knight.style.transform = "scale(1.3)";
         kinghtImageNumber++;
-        if(kinghtImageNumber === 10) clearInterval(intervalId);
-        knight.style.backgroundImage = `url('img/knight/Dead (${kinghtImageNumber}).png')`;
-    },50);
+        if(angle > 90) angle = angle-90;
+        if(angle > 0){
+            knight.style.top = originalOffsetTop - 350*Math.sin(angle/180*Math.PI) + "px"; 
+            angle --;
+            isFalling = false;
+        }
+        if(kinghtImageNumber < 11){
+            knight.style.backgroundImage = `url('img/knight/Dead (${kinghtImageNumber}).png')`;
+            isDying = false;
+        }
+    },20);
 }
 
 $('#play-again').on('click',()=> resetGame());
