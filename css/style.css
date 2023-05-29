@@ -70,5 +70,21 @@ ul{
     font-size: 20px;
 }
 
+.back{
+    transform: scale(0.6);
+    /* transform: translateY(10px); */
+    filter: blur(2px);
+    /* background-color: yellow; */
+    bottom: 40px !important;
+}
+
+.mid{
+    transform: scale(0.8);
+    /* transform: translateY(10px); */
+    filter: blur(1px);
+    /* background-color: yellow; */
+    bottom: 80px !important;
+}
+
 
 

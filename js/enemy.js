@@ -103,6 +103,7 @@ function killKnightAndPlaceOnGround(){
             knight.style.backgroundImage = `url('img/knight/Dead (${kinghtImageNumber}).png')`;
             isDying = false;
         }
+        if(isFalling && isDying) clearInterval(intervalId);
     },20);
 }
 
