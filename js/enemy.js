@@ -27,13 +27,10 @@ class Enemy {
 
     killThePlayer(){
         knightAction = "Dead";
-        isDead = true;
-        setTimeout(()=>{
-            $('#modal-button').trigger('click');
-            clearInterval(mainInterval);
-            clearInterval(enemyInterval);
-        },500);
-        
+        $('#modal-button').trigger('click');
+        clearInterval(mainInterval);
+        clearInterval(enemyInterval);
+        killKnightAndPlaceOnGround();
 
     }
 
@@ -85,9 +82,22 @@ moveEnemies = function(){
     tree.moveWithKnight();
 }
 
+function killKnightAndPlaceOnGround(){
+    isDead = true;
+    kinghtImageNumber = 0;
+    knight.style.transform = "scale(1)";
+    knight.style.bottom = "80px";
+    let intervalId = setInterval(()=>{
+        knight.style.bottom = "80px";
+        knight.style.transform = "scale(1.3)";
+        kinghtImageNumber++;
+        if(kinghtImageNumber === 10) clearInterval(intervalId);
+        knight.style.backgroundImage = `url('img/knight/Dead (${kinghtImageNumber}).png')`;
+    },50);
+}
+
 $('#play-again').on('click',()=> resetGame());
 
 function resetGame(){
     points  = 0;
-
 }

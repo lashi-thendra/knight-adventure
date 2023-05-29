@@ -22,9 +22,6 @@ let isDead = false;
 
 let knight = document.getElementById('knight');
 
-let forests = Array.from(document.querySelectorAll(".forest"));
-
-
 for (let i = 0 ; i < 3; i++) {
     classx = classes[i];
     for (let j = 0; j < 6 -i; j++) {
@@ -39,8 +36,6 @@ for (let i = 0 ; i < 3; i++) {
 
         treeNumber = Math.floor(Math.random()*2) + 7;
         element.style.backgroundImage = `url(img/Object/obj${treeNumber}.png)`;
-        
-
         
         element.replaceTree = replaceTree;
 
@@ -136,6 +131,7 @@ function jump(){
 }
 
 addEventListener('keydown', (eventData)=>{
+    if(isDead) return;
     if(eventData.key === "ArrowRight"){
         knightAction = jumpBool? "Jump":"Run";
         runBool = true;
@@ -155,6 +151,7 @@ addEventListener('keydown', (eventData)=>{
 });
 
 addEventListener('keyup', (eventData)=>{
+    if(isDead) return;
     if(eventData.key === "ArrowRight"){
         knightAction = jumpBool? "Jump": "Idle";
         runBool = false;
@@ -170,18 +167,16 @@ addEventListener('keyup', (eventData)=>{
 });
 
 addEventListener('keypress', (eventData)=>{
+    if(isDead) return;
     if(eventData.key == " "){
         jumpBool = true;
         knightAction = "Jump";
     }
-    
 });
 
 
 let mainInterval = setInterval(()=>{
-
     count++;
-    // if(count % 5 != 0) return;
     if(kinghtImageNumber === 10) kinghtImageNumber =1;
     knight.style.backgroundImage = 
     `url('img/knight/${knightAction} (${kinghtImageNumber}).png')`;
@@ -193,7 +188,7 @@ let mainInterval = setInterval(()=>{
     if(attachBool){
         if(angle === 0) return;
     } 
-    if(runBool && !isDead) run();
+    if(runBool) run();
 },20);
 
 
