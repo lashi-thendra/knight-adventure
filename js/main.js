@@ -18,9 +18,12 @@ let points = 0;
 let kinghtImageNumber = 1;
 let count = 0;
 let isDead = false;
-
+let groundElems = [];
+let angle = 0;
+let dy = 2;
 
 let knight = document.getElementById('knight');
+let btnPlayGain = $('#btn-play-again');
 
 for (let i = 0 ; i < 3; i++) {
     classx = classes[i];
@@ -44,7 +47,7 @@ for (let i = 0 ; i < 3; i++) {
     leftx = -100 + i*250;
 }
 
-let groundElems = []
+
 for (let index = 0; index < 15; index++) {
         let groundElem = document.createElement('div');
         groundElem.classList.add('ground');
@@ -55,7 +58,51 @@ for (let index = 0; index < 15; index++) {
         groundElems.push(groundElem);
 }
 
+addEventListener('keydown', (eventData)=>{
+    if(isDead) return;
+    if(eventData.key === "ArrowRight"){
+        knightAction = jumpBool? "Jump":"Run";
+        runBool = true;
+        runFoward = true;
+        knight.style.transform = 'scaleX(1)';
+    }
+    if(eventData.key === "ArrowLeft"){
+        knightAction = jumpBool? "Jump":"Run"
+        runBool = true;
+        runFoward = false;
+        knight.style.transform = 'scaleX(-1)';
+    }
+    if(eventData.key == "d"){
+        knightAction = jumpBool? "JumpAttack":"Attack";
+        attachBool = true;
+    }
+});
 
+addEventListener('keyup', (eventData)=>{
+    if(isDead) return;
+    if(eventData.key === "ArrowRight"){
+        knightAction = jumpBool? "Jump": "Idle";
+        runBool = false;
+    }
+    if(eventData.key === "ArrowLeft"){
+        knightAction = jumpBool? "Jump":"Idle";
+        runBool = false;
+    }
+    if(eventData.key == "d"){
+        knightAction = jumpBool? "Jump":`${runBool?'Run':'Idle'}`;
+        attachBool = false;
+        kinghtImageNumber = 1;
+    }
+});
+
+addEventListener('keypress', (eventData)=>{
+    if(isDead) return;
+    if(eventData.key == " "){
+        jumpBool = true;
+        knightAction = "Jump";
+    }
+});
+btnPlayGain.on('click', playagain);
 
 let frontTrees = Array.from(document.getElementsByClassName('front'));
 let midTrees = Array.from(document.getElementsByClassName('mid'));
@@ -117,8 +164,7 @@ function run(){
     else knight.style.left = knight.offsetLeft - 10 + "px";
 }
 
-let angle = 0;
-let dy = 2;
+
 let originalOffsetTop = knight.offsetTop ;
 function jump(){
     knight.style.top = originalOffsetTop - 350*Math.sin(angle/180*Math.PI) + "px"; 
@@ -130,52 +176,12 @@ function jump(){
     angle += 2;
 }
 
-addEventListener('keydown', (eventData)=>{
-    if(isDead) return;
-    if(eventData.key === "ArrowRight"){
-        knightAction = jumpBool? "Jump":"Run";
-        runBool = true;
-        runFoward = true;
-        knight.style.transform = 'scaleX(1)';
-    }
-    if(eventData.key === "ArrowLeft"){
-        knightAction = jumpBool? "Jump":"Run"
-        runBool = true;
-        runFoward = false;
-        knight.style.transform = 'scaleX(-1)';
-    }
-    if(eventData.key == "d"){
-        knightAction = jumpBool? "JumpAttack":"Attack";
-        attachBool = true;
-    }
-});
-
-addEventListener('keyup', (eventData)=>{
-    if(isDead) return;
-    if(eventData.key === "ArrowRight"){
-        knightAction = jumpBool? "Jump": "Idle";
-        runBool = false;
-    }
-    if(eventData.key === "ArrowLeft"){
-        knightAction = jumpBool? "Jump":"Idle";
-        runBool = false;
-    }
-    if(eventData.key == "d"){
-        knightAction = jumpBool? "Jump":`${runBool?'Run':'Idle'}`;
-        attachBool = false;
-    }
-});
-
-addEventListener('keypress', (eventData)=>{
-    if(isDead) return;
-    if(eventData.key == " "){
-        jumpBool = true;
-        knightAction = "Jump";
-    }
-});
 
 
-let mainInterval = setInterval(()=>{
+
+let mainInterval = setInterval(gamePlay,20);
+
+function gamePlay(){
     count++;
     if(kinghtImageNumber === 10) kinghtImageNumber =1;
     knight.style.backgroundImage = 
@@ -189,7 +195,20 @@ let mainInterval = setInterval(()=>{
         if(angle === 0) return;
     } 
     if(runBool) run();
-},20);
+};
+
+function playagain(){
+    points = 0;
+    knight.style.left = "100px";
+    kinghtImageNumber = 1;
+    isDead  =false;
+    jumpBool = false;
+    attachBool = false;
+    mainInterval = setInterval(gamePlay, 20);
+}
+
+
+
 
 
 

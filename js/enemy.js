@@ -21,8 +21,10 @@ class Enemy {
         $("#score").removeClass('animate__bounce');
         this.enemey.style.left = `${this.respawnLeft}px`;
         console.log("enemy dead");
-        setTimeout(()=>{$("#score").addClass('animate__bounce')},0)
-        setTimeout(()=>{$("#score").removeClass('animate__bounce')},1000)
+        setTimeout(()=>{$("#score").addClass('animate__bounce')},0);
+        setTimeout(()=>{$("#score").removeClass('animate__bounce')},1000);
+        points += obj.diePoints;
+            if(obj.enemey.left < 0)document.querySelector('div > span').innerText = points;
     }
 
     killThePlayer(){
@@ -60,6 +62,8 @@ let enemyInterval = setInterval(()=>{
     [snail, bird, tree].forEach((obj)=> checkforKillDie(obj));
 }, 20);
 
+$('#play-again').on('click',()=> resetGame());
+
 function checkforKillDie(obj){
     obj.move();
         let distance = Math.hypot(knight.offsetLeft + 100 - (obj.enemey.offsetLeft + 75),
@@ -69,10 +73,8 @@ function checkforKillDie(obj){
             obj.killThePlayer();
         }
 
-        if(distance < 120 && attachBool){
+        if(distance < 120 && attachBool && (kinghtImageNumber >= 5 && kinghtImageNumber <= 8)){
             obj.die();
-            points += obj.diePoints;
-            document.querySelector('div > span').innerText = points;
         } 
 }
 
@@ -83,6 +85,7 @@ moveEnemies = function(){
 }
 
 function killKnightAndPlaceOnGround(){
+    console.log("dead");
     isDead = true;
     kinghtImageNumber = 0;
     knight.style.transform = "scale(1)";
@@ -107,7 +110,7 @@ function killKnightAndPlaceOnGround(){
     },20);
 }
 
-$('#play-again').on('click',()=> resetGame());
+
 
 function resetGame(){
     points  = 0;

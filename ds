@@ -1,0 +1,22 @@
+[33mfa3a7de[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m resize trees
+[33ma06c3c9[m add falling effect
+[33m027210e[m implement dead animation
+[33m920a55c[m remove ground tile numbers
+[33m626f3d9[m finalize
+[33m25491e5[m image paths corrected
+[33mbabefc5[m add favicon
+[33m5afaae9[m add enemy characters
+[33m72c9a43[m relocate knight img
+[33mb5f98df[m reduce size of sun
+[33m3e0f361[m corrected links
+[33m2729be2[m change paths
+[33m57d062b[m change the paths
+[33ma944252[m paths
+[33m647d7f8[m chage file paths of images
+[33md999ee1[m remove high q images
+[33m4f095fc[m reduce size of images
+[33m2e734b0[m changed image paths
+[33mbcf80ed[m some modifications to the background forest
+[33m7fca318[m finalize character basic actions
+[33m263d91a[m finaliz basic background movement
+[33mf98edf0[m initial commit
