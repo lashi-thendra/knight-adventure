@@ -27,6 +27,7 @@ class Enemy {
     }
 
     killThePlayer(){
+        console.log("kill the player function");
         knightAction = "Dead";
         $('#modal-button').trigger('click');
         clearInterval(mainInterval);
@@ -90,7 +91,7 @@ function checkforKillDie(obj){
 
 
 function killKnightAndPlaceOnGround(){
-    console.log("dead");
+    console.log("kill knight and place on ground function");
     audioHurt.play();
     isDead = true;
     kinghtImageNumber = 0;
@@ -102,25 +103,24 @@ function killKnightAndPlaceOnGround(){
         knight.style.bottom = "80px";
         knight.style.transform = "scale(1.3)";
         kinghtImageNumber++;
-        
+        angle --;
         if(angle > 90) angle = angle-90;
         if(angle >= 0){
             knight.style.top = originalOffsetTop - 350*Math.sin(angle/180*Math.PI) + "px"; 
-            angle --;
-            if(angle <= 0){
-                isFalling = false;
-                console.log("falling ",isFalling);
-            } 
         }
+        if(angle <= 0){
+            isFalling = false;
+            console.log("falling ",isFalling);
+        } 
         if(kinghtImageNumber <= 10){
             knight.style.backgroundImage = `url('img/knight/Dead (${kinghtImageNumber}).png')`;
-            if(kinghtImageNumber >= 10){
-                isDying = false;
-                console.log("is Dying", isDying);
-            } 
         }
+        if(kinghtImageNumber > 10){
+            isDying = false;
+            console.log("is Dying", isDying);
+        } 
         console.log(killAnimationInterval);
-        if((!isFalling && !isDying) || (kinghtImageNumber > 200)){
+        if(!isFalling && !isDying){
             console.log("clearing in");
             clearInterval(killAnimationInterval);
         } 
