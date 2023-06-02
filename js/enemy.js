@@ -18,13 +18,14 @@ class Enemy {
     }
 
     die(){
-        $("#score").removeClass('animate__bounce');
+        if(this.enemey.offsetLeft > 0){
+            $("#score").removeClass('animate__bounce');
+            setTimeout(()=>{$("#score").addClass('animate__bounce')},0);
+            points += this.diePoints;
+            document.querySelector('div > span').innerText = points;
+        }
         this.enemey.style.left = `${this.respawnLeft}px`;
         console.log("enemy dead");
-        setTimeout(()=>{$("#score").addClass('animate__bounce')},0);
-        setTimeout(()=>{$("#score").removeClass('animate__bounce')},1000);
-        points += obj.diePoints;
-            if(obj.enemey.left < 0)document.querySelector('div > span').innerText = points;
     }
 
     killThePlayer(){
@@ -33,7 +34,6 @@ class Enemy {
         clearInterval(mainInterval);
         clearInterval(enemyInterval);
         killKnightAndPlaceOnGround();
-
     }
 
     move(){
