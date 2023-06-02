@@ -24,6 +24,11 @@ let dy = 2;
 
 let knight = document.getElementById('knight');
 let btnPlayGain = $('#btn-play-again');
+let audioSwoosh = new Audio("audio/swoosh.mp3");
+let audioHurt = new Audio("audio/hurt.mp3");
+let audioRunning = new Audio("audio/running.mp3");
+
+$(audioRunning).on('canplay',()=>console.log("can play"));
 
 for (let i = 0 ; i < 3; i++) {
     classx = classes[i];
@@ -189,12 +194,28 @@ function gamePlay(){
     if(angle < 30){
         if(count % 3 === 0) kinghtImageNumber++;
     }
+
+    if((kinghtImageNumber===5) && (knightAction.includes("Attack"))){
+        audioSwoosh.play();
+        console.log("swoosh");
+    } 
     if(count === 10) count = 0;
     if(jumpBool) jump();
     if(attachBool){
+        audioRunning.pause();
         if(angle === 0) return;
     } 
-    if(runBool) run();
+    if(runBool){
+        if(!jumpBool)audioRunning.play();
+        else audioRunning.pause();
+        run();
+    }else{
+        audioRunning.pause();
+    } 
+    
+    // if(kinghtImageNumber ===10){
+    //     audioSwoosh.pause();
+    // }
 };
 
 function playagain(){

@@ -70,6 +70,7 @@ function checkforKillDie(obj){
              knight.offsetTop + 100 - (obj.enemey.offsetTop+ 75));
 
         if(distance < 100){
+            audioRunning.pause();
             obj.killThePlayer();
         }
 
@@ -86,6 +87,7 @@ moveEnemies = function(){
 
 function killKnightAndPlaceOnGround(){
     console.log("dead");
+    audioHurt.play();
     isDead = true;
     kinghtImageNumber = 0;
     knight.style.transform = "scale(1)";
@@ -111,7 +113,3 @@ function killKnightAndPlaceOnGround(){
 }
 
 
-
-function resetGame(){
-    points  = 0;
-}
