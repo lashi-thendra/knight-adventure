@@ -64,6 +64,7 @@ for (let index = 0; index < 15; index++) {
 }
 
 addEventListener('keydown', (eventData)=>{
+    
     if(isDead) return;
     if(eventData.key === "ArrowRight"){
         knightAction = jumpBool? "Jump":"Run";
@@ -84,6 +85,7 @@ addEventListener('keydown', (eventData)=>{
 });
 
 addEventListener('keyup', (eventData)=>{
+    
     if(isDead) return;
     if(eventData.key === "ArrowRight"){
         knightAction = jumpBool? "Jump": "Idle";
@@ -108,7 +110,7 @@ addEventListener('keypress', (eventData)=>{
         knightAction = "Jump";
     }
 });
-btnPlayGain.on('click', playagain);
+
 
 let frontTrees = Array.from(document.getElementsByClassName('front'));
 let midTrees = Array.from(document.getElementsByClassName('mid'));
@@ -182,14 +184,11 @@ function jump(){
     angle += 2;
 }
 
-
-
-
 let mainInterval = setInterval(gamePlay,20);
 
 function gamePlay(){
     count++;
-    if(kinghtImageNumber === 10) kinghtImageNumber =1;
+    if(kinghtImageNumber >= 10) kinghtImageNumber =1;
     knight.style.backgroundImage = 
     `url('img/knight/${knightAction} (${kinghtImageNumber}).png')`;
     if(angle < 30){
@@ -198,7 +197,6 @@ function gamePlay(){
 
     if((kinghtImageNumber===5) && (knightAction.includes("Attack"))){
         audioSwoosh.play();
-        console.log("swoosh");
     } 
     if(count === 10) count = 0;
     if(jumpBool) jump();
@@ -213,21 +211,9 @@ function gamePlay(){
     }else{
         audioRunning.pause();
     } 
-    
-    // if(kinghtImageNumber ===10){
-    //     audioSwoosh.pause();
-    // }
 };
 
-function playagain(){
-    points = 0;
-    knight.style.left = "100px";
-    kinghtImageNumber = 1;
-    isDead  =false;
-    jumpBool = false;
-    attachBool = false;
-    mainInterval = setInterval(gamePlay, 20);
-}
+
 
 
 

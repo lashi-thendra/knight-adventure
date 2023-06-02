@@ -9,6 +9,7 @@ class Enemy {
         this.respawnLeft =  respawnLeft;
         this.attackDistance =  attackDistance;
         this.diePoints = diePoints;
+        this.initialLeft = initialLeft;
         this.enemey = document.createElement('div');
         this.enemey.style.backgroundImage = path;
         this.enemey.classList.add('enemy');
@@ -48,8 +49,9 @@ class Enemy {
     }
 
     reset(){
+        console.log("reset");
         let jEl = $(this.enemey);
-        jEl.css.left = this.initialLeft;
+        jEl.css('left',`${this.initialLeft}px` );
     }
 
 }
@@ -61,6 +63,14 @@ let tree = new Enemy('url(img/enemy/3.gif)', 0, 50 , 100, 1130, 2, 2000);
 let enemyInterval = setInterval(()=>{
     [snail, bird, tree].forEach((obj)=> checkforKillDie(obj));
 }, 20);
+
+moveEnemies = function(){
+    snail.moveWithKnight();
+    bird.moveWithKnight();
+    tree.moveWithKnight();
+}
+
+btnPlayGain.on('click', playagain);
 
 function checkforKillDie(obj){
     obj.move();
@@ -77,11 +87,7 @@ function checkforKillDie(obj){
         } 
 }
 
-moveEnemies = function(){
-    snail.moveWithKnight();
-    bird.moveWithKnight();
-    tree.moveWithKnight();
-}
+
 
 function killKnightAndPlaceOnGround(){
     console.log("dead");
@@ -96,18 +102,49 @@ function killKnightAndPlaceOnGround(){
         knight.style.bottom = "80px";
         knight.style.transform = "scale(1.3)";
         kinghtImageNumber++;
+        
         if(angle > 90) angle = angle-90;
-        if(angle > 0){
+        if(angle >= 0){
             knight.style.top = originalOffsetTop - 350*Math.sin(angle/180*Math.PI) + "px"; 
             angle --;
-            isFalling = false;
+            if(angle <= 0){
+                isFalling = false;
+                console.log("falling ",isFalling);
+                
+            } 
         }
-        if(kinghtImageNumber < 11){
+        if(kinghtImageNumber <= 10){
             knight.style.backgroundImage = `url('img/knight/Dead (${kinghtImageNumber}).png')`;
-            isDying = false;
+            if(kinghtImageNumber >= 10){
+                isDying = false;
+                console.log("is Dying", isDying);
+            } 
         }
-        if(isFalling && isDying) clearInterval(intervalId);
+        console.log(angle, kinghtImageNumber);
+        console.log(isFalling, isDying);
+        if(!isFalling && !isDying){
+            console.log("clearing interval");
+            clearInterval(intervalId);
+        } 
     },20);
+}
+
+function playagain(){
+    [snail, bird, tree].forEach(obj => obj.reset());
+    points = 0;
+    knight.style.left = "100px";
+    knight.style.transform = "scale(1)";
+    kinghtImageNumber = 1;
+    isDead  =false;
+    jumpBool = false;
+    attachBool = false;
+    runBool = false;
+    count = 0;
+    knightAction = 'Idle';
+    mainInterval = setInterval(()=> {
+        gamePlay();
+        [snail, bird, tree].forEach(obj => checkforKillDie(obj));
+    }, 20);
 }
 
 
