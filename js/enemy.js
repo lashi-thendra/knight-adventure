@@ -1,7 +1,3 @@
-
-let killAnimationInterval = null;
-
-
 class Enemy {
     constructor(path, velocity, attackDistance, elevation, initialLeft, diePoints, respawnLeft){
         this.knightVelocity = 0;
@@ -16,7 +12,7 @@ class Enemy {
         this.enemey.classList.add('enemy');
         this.enemey.style.bottom = elevation + "px";
         this.enemey.style.left = initialLeft + "px";
-        document.body.append(this.enemey);
+        mainSection.append(this.enemey);
     }
 
     die(){
@@ -102,7 +98,7 @@ function killKnightAndPlaceOnGround(){
     knight.style.bottom = "80px";
     let isFalling = true;
     let isDying = true;
-    killAnimationInterval = setInterval(()=>{
+    const killAnimationInterval = setInterval(()=>{
         knight.style.bottom = "80px";
         knight.style.transform = "scale(1.3)";
         kinghtImageNumber++;
@@ -123,17 +119,15 @@ function killKnightAndPlaceOnGround(){
                 console.log("is Dying", isDying);
             } 
         }
-        console.log(angle, kinghtImageNumber);
-        console.log(isFalling, isDying);
-        if(!isFalling && !isDying){
-            console.log("clearing interval");
+        console.log(killAnimationInterval);
+        if((!isFalling && !isDying) || (kinghtImageNumber > 200)){
+            console.log("clearing in");
             clearInterval(killAnimationInterval);
         } 
     },20);
 }
 
 function playagain(){
-    clearInterval(killAnimationInterval);
     [snail, bird, tree].forEach(obj => obj.reset());
     points = 0;
     $('#score > span').text(0);

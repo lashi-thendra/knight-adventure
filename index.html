@@ -22,42 +22,51 @@
 
 <body>
 
-  <div id="knight"></div>
-  <div id="score" class="badge bg-success text-wrap animate__animated animate__bounce" style=" width: 6rem;">
-    score: <span>0</span>
-  </div>
-
-
-  <div id="crd">
-    Developed By<br>
-    LashiThendra Bandara
-  </div>
-
-  <!-- Button trigger modal -->
-  <button id="modal-button" type="button" class="btn btn-primary " data-bs-toggle="modal"
-    data-bs-target="#exampleModal">
-    Launch demo modal
-  </button>
-
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-
-        <div class="modal-body d-flex justify-content-center">
-            <span class="fs-3" id="modal-text"></span>
-        </div>
-
-        <div class="modal-footer d-flex justify-content-center">
-          <!-- <button type="button" class="btn btn-secondary d-none" data-bs-dismiss="modal">Close</button> -->
-          <button id="btn-play-again" type="button" class="btn btn-success " data-bs-dismiss="modal">Click to play
-            again</button>
+  <section id="main-section">
+    <div id="knight"></div>
+    <div id="score" class="badge bg-success text-wrap animate__animated animate__bounce" style=" width: 6rem;">
+      score: <span>0</span>
+    </div>
+  
+  
+    <div id="crd">
+      Developed By<br>
+      LashiThendra Bandara
+    </div>
+  
+    <!-- Button trigger modal -->
+    <button id="modal-button" type="button" class="btn btn-primary " data-bs-toggle="modal"
+      data-bs-target="#exampleModal">
+      Launch demo modal
+    </button>
+  
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+  
+          <div class="modal-body d-flex justify-content-center">
+              <span class="fs-3" id="modal-text"></span>
+          </div>
+  
+          <div class="modal-footer d-flex justify-content-center">
+            <!-- <button type="button" class="btn btn-secondary d-none" data-bs-dismiss="modal">Close</button> -->
+            <button id="btn-play-again" type="button" class="btn btn-success " data-bs-dismiss="modal">Click to play
+              again</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
-
+  </section>
+  
+  <section id="info-section" class="d-none justify-content-center align-items-center">
+    <div class="p-3 fs-2 text-center text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
+      Oops! That's awkward! 🙈<br>
+      It seems like you're trying to play the game on a larger or a smaller screen.<br>
+      This game is specifically designed for laptop-size screens with a resolution of 1366 x 768. <br>
+      I recommend resizing your browser or switching to a compatible device.
+    </div>
+  </section>
 
 
 </body>

@@ -6,6 +6,7 @@ body {
     background-image: url(../img/BG/BG.png);
     background-position-y: -300px;
     background-size: cover;
+    /* background-position: center; */
     overflow: hidden;
     font-family: Ubuntu;
 }
@@ -74,6 +75,10 @@ body {
     z-index: 999;
 }
 
+#info-section{
+    height: 100vh;
+}
+
 ul{
     position: relative;
     top: 50px;
@@ -98,6 +103,27 @@ ul{
     /* background-color: yellow; */
     bottom: 80px !important;
 }
+
+@media all and (min-width:1400px) {
+    #main-section {
+        display: none;
+    }
+    #info-section{
+        display: flex !important;
+    }
+}
+
+@media screen and (max-width: 1025px) {
+    #main-section{
+        display: none;
+    }
+    #info-section{
+        display: flex !important;
+    }
+}
+
+
+
 
 
 
