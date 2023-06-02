@@ -62,8 +62,6 @@ let enemyInterval = setInterval(()=>{
     [snail, bird, tree].forEach((obj)=> checkforKillDie(obj));
 }, 20);
 
-$('#play-again').on('click',()=> resetGame());
-
 function checkforKillDie(obj){
     obj.move();
         let distance = Math.hypot(knight.offsetLeft + 100 - (obj.enemey.offsetLeft + 75),

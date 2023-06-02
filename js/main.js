@@ -97,6 +97,7 @@ addEventListener('keyup', (eventData)=>{
         knightAction = jumpBool? "Jump":`${runBool?'Run':'Idle'}`;
         attachBool = false;
         kinghtImageNumber = 1;
+        audioSwoosh.pause();
     }
 });
 
