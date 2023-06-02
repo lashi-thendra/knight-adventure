@@ -23,9 +23,11 @@
 <body>
 
   <div id="knight"></div>
-  <div id="score" class="badge bg-primary text-wrap animate__animated animate__bounce"" style=" width: 6rem;">
+  <div id="score" class="badge bg-success text-wrap animate__animated animate__bounce" style=" width: 6rem;">
     score: <span>0</span>
   </div>
+
+
   <div id="crd">
     Developed By<br>
     LashiThendra Bandara
@@ -39,18 +41,16 @@
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <div class="modal-header">
-          <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1> -->
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+        <div class="modal-body d-flex justify-content-center">
+            <span class="fs-3" id="modal-text"></span>
         </div>
-        <div class="modal-body">
-          Game over
-        </div>
-        <div class="modal-footer">
+
+        <div class="modal-footer d-flex justify-content-center">
           <!-- <button type="button" class="btn btn-secondary d-none" data-bs-dismiss="modal">Close</button> -->
-          <button id="btn-play-again" type="button" class="btn btn-primary" data-bs-dismiss="modal">Click to play
+          <button id="btn-play-again" type="button" class="btn btn-success " data-bs-dismiss="modal">Click to play
             again</button>
         </div>
       </div>

@@ -27,6 +27,7 @@ let btnPlayGain = $('#btn-play-again');
 let audioSwoosh = new Audio("audio/swoosh.mp3");
 let audioHurt = new Audio("audio/hurt.mp3");
 let audioRunning = new Audio("audio/running.mp3");
+let audioJump = new Audio("audio/jump.mp3")
 
 $(audioRunning).on('canplay',()=>console.log("can play"));
 
@@ -134,6 +135,8 @@ function moveTree(){
 function replaceTree(){
     if(this.offsetLeft <= -300){
         this.style.left = innerWidth + "px";
+        points += 1;
+        document.querySelector('#score > span').innerText = points;
     } 
 }
 
@@ -175,6 +178,7 @@ function run(){
 
 let originalOffsetTop = knight.offsetTop ;
 function jump(){
+    audioJump.play();
     knight.style.top = originalOffsetTop - 350*Math.sin(angle/180*Math.PI) + "px"; 
     if(angle >= 180){
         angle = 0;
@@ -187,6 +191,7 @@ function jump(){
 let mainInterval = setInterval(gamePlay,20);
 
 function gamePlay(){
+    console.log(points);
     count++;
     if(kinghtImageNumber >= 10) kinghtImageNumber =1;
     knight.style.backgroundImage = 

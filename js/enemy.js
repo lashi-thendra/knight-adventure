@@ -1,4 +1,5 @@
-let points = 0;
+
+let killAnimationInterval = null;
 
 
 class Enemy {
@@ -23,7 +24,7 @@ class Enemy {
             $("#score").removeClass('animate__bounce');
             setTimeout(()=>{$("#score").addClass('animate__bounce')},0);
             points += this.diePoints;
-            document.querySelector('div > span').innerText = points;
+            document.querySelector('#score > span').innerText = points;
         }
         this.enemey.style.left = `${this.respawnLeft}px`;
         console.log("enemy dead");
@@ -70,7 +71,9 @@ moveEnemies = function(){
     tree.moveWithKnight();
 }
 
-btnPlayGain.on('click', playagain);
+btnPlayGain.on('click', ()=>{
+    playagain();
+} );
 
 function checkforKillDie(obj){
     obj.move();
@@ -79,6 +82,7 @@ function checkforKillDie(obj){
 
         if(distance < 100){
             audioRunning.pause();
+            $('#modal-text').text(`Total score: ${points}`);
             obj.killThePlayer();
         }
 
@@ -98,7 +102,7 @@ function killKnightAndPlaceOnGround(){
     knight.style.bottom = "80px";
     let isFalling = true;
     let isDying = true;
-    let intervalId = setInterval(()=>{
+    killAnimationInterval = setInterval(()=>{
         knight.style.bottom = "80px";
         knight.style.transform = "scale(1.3)";
         kinghtImageNumber++;
@@ -110,7 +114,6 @@ function killKnightAndPlaceOnGround(){
             if(angle <= 0){
                 isFalling = false;
                 console.log("falling ",isFalling);
-                
             } 
         }
         if(kinghtImageNumber <= 10){
@@ -124,14 +127,16 @@ function killKnightAndPlaceOnGround(){
         console.log(isFalling, isDying);
         if(!isFalling && !isDying){
             console.log("clearing interval");
-            clearInterval(intervalId);
+            clearInterval(killAnimationInterval);
         } 
     },20);
 }
 
 function playagain(){
+    clearInterval(killAnimationInterval);
     [snail, bird, tree].forEach(obj => obj.reset());
     points = 0;
+    $('#score > span').text(0);
     knight.style.left = "100px";
     knight.style.transform = "scale(1)";
     kinghtImageNumber = 1;
