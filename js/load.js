@@ -12,7 +12,7 @@ console.log("total count:", total);
 imgUrls.forEach((url)=>{
     const imgDev = new Image();
     imgDev.src = url;
-    imgDev.onload = updataProgressBar;
+    imgDev.onload = (el)=> updataProgressBar(el);
     imgDev.onerror = ()=>{
         console.log("error loading", url);
     }
@@ -20,13 +20,14 @@ imgUrls.forEach((url)=>{
 
 audioUrls.forEach((url)=>{
     const audElm = new Audio(url);
-    $(audElm).on('canplay', ()=> updataProgressBar());
+    $(audElm).on('canplay', (evt)=> updataProgressBar(evt.target));
 });
 
 
-function updataProgressBar(){
+function updataProgressBar(elm){
     completed++;
     console.log(completed);
+    document.body.append(elm);
     let percentage = Math.ceil(completed/total * 100);
     $('#pb').css('width', `${percentage}%`);
     $('#pb').text(`${percentage}%`);
