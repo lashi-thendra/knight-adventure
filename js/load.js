@@ -37,5 +37,6 @@ function updataProgressBar(elm){
         $('#loading-section').addClass('invisible');
         $('#main-section').removeClass('invisible');
         $('ul').addClass('invisible');
+        $(btnPlayGain).trigger('click');
     }
 }
