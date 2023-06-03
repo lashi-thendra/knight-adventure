@@ -27,6 +27,7 @@ class Enemy {
     }
 
     killThePlayer(){
+        if(!gameStarted)return;
         console.log("kill the player function");
         knightAction = "Dead";
         $('#modal-button').trigger('click');

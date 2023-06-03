@@ -1,4 +1,4 @@
-
+let gameStarted = true;
 let element;  
 let topx = 50;  
 let leftx = 0;
@@ -29,6 +29,7 @@ let audioHurt = new Audio("audio/hurt.mp3");
 let audioRunning = new Audio("audio/running.mp3");
 let audioJump = new Audio("audio/jump.mp3");
 let mainSection = $('#main-section');
+let mainInterval = null;
 
 $(audioRunning).on('canplay',()=>console.log("can play"));
 
@@ -189,7 +190,7 @@ function jump(){
     angle += 2;
 }
 
-let mainInterval = setInterval(gamePlay,20);
+mainInterval = setInterval(gamePlay, 20);
 
 function gamePlay(){
     count++;
@@ -217,6 +218,8 @@ function gamePlay(){
         audioRunning.pause();
     } 
 };
+
+
 
 
 

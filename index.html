@@ -17,12 +17,13 @@
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
     crossorigin="anonymous"></script>
   <script defer src="js/main.js"></script>
+  <script type="module" src="js/load.js"></script>
   <script type="module" src="js/enemy.js"></script>
 </head>
 
 <body>
 
-  <section id="main-section">
+  <section id="main-section" class="invisible">
     <div id="knight"></div>
     <div id="score" class="badge bg-success text-wrap animate__animated animate__bounce" style=" width: 6rem;">
       score: <span>0</span>
@@ -67,7 +68,11 @@
       I recommend resizing your browser or switching to a compatible device.
     </div>
   </section>
-
+  <section id="loading-section" class="d-flex justify-content-center align-items-center">
+    <div id="progress-bar-container" class="progress" role="progressbar" aria-label="Example 50px high" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+      <div id="pb" class="progress-bar bg-success" style="width: 0%">0%</div>
+    </div>
+  </section>
 
 </body>
 
