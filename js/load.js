@@ -27,7 +27,7 @@ audioUrls.forEach((url)=>{
 function updataProgressBar(elm){
     completed++;
     console.log(completed);
-    document.body.append(elm);
+    $(loading-section).append(elm);
     let percentage = Math.ceil(completed/total * 100);
     $('#pb').css('width', `${percentage}%`);
     $('#pb').text(`${percentage}%`);
