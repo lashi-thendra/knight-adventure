@@ -1,4 +1,4 @@
-let gameStarted = true;
+let gameStarted = false;
 let element;  
 let topx = 50;  
 let leftx = 0;
