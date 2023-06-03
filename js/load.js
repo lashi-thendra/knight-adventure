@@ -28,6 +28,7 @@ function updataProgressBar(elm){
     completed++;
     console.log(completed);
     $(elm).css('position','absolute');
+    $(elm).css('visibility','hidden');
     $('#loading-section').append(elm);
     let percentage = Math.ceil(completed/total * 100);
     $('#pb').css('width', `${percentage}%`);
