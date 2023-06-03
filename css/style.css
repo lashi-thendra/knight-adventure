@@ -89,10 +89,13 @@ body {
 }
 
 ul{
-    position: relative;
-    top: 50px;
+    position: absolute;
+    color: white;
+    text-align: center;
+    width: 100%;
+    bottom: 200px;
     z-index: 20;
-    left: 20px;
+    left: 0px;
     font-family: Ubuntu, sans-serif;
     font-size: 20px;
 }
