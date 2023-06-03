@@ -27,12 +27,12 @@ audioUrls.forEach((url)=>{
 function updataProgressBar(elm){
     completed++;
     console.log(completed);
-    $(loading-section).append(elm);
+    $('#loading-section').append(elm);
     let percentage = Math.ceil(completed/total * 100);
     $('#pb').css('width', `${percentage}%`);
     $('#pb').text(`${percentage}%`);
-    if(completed === total){
-        $('#loading-section').addClass('invisible');
-        $('#main-section').removeClass('invisible');
-    }
+    // if(completed === total){
+    //     $('#loading-section').addClass('invisible');
+    //     $('#main-section').removeClass('invisible');
+    // }
 }
