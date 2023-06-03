@@ -13,7 +13,9 @@ imgUrls.forEach((url)=>{
     const imgDev = new Image();
     imgDev.src = url;
     imgDev.onload = updataProgressBar;
-    imgDev.onerror = updataProgressBar;
+    imgDev.onerror = ()=>{
+        console.log("error loading", url);
+    }
 });
 
 audioUrls.forEach((url)=>{
