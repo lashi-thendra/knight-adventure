@@ -1,18 +1,16 @@
 # Knight Adventure
-This is a simple game built using vanilla HTML, CSS, and JavaScript, along with some Bootstrap and jQuery. The objective of the game is to control a character that can run, jump, and attack. The character can be moved using the left and right arrow keys, while the D key is used to attack and the space bar is used to jump.
 
-As you progress further in the game, you earn more points. Points can be gained by both progressing in the game and defeating creatures. The game features a scoring system to keep track of your achievements.
+Knight Adventure is a simple game created with HTML, CSS, JavaScript, jQuery, and Bootstrap. Control a character who can run, jump, and attack. Move left and right using the arrow keys, attack with the D key, and jump using the space bar.
 
-The visuals of the game are enhanced by implementing character animations using single image elements. The game also includes animated GIFs for the enemies, adding more variety and visual interest.
+## Tech Stack
 
-### Version
-1.0.0
+- HTML
+- CSS
+- JavaScript
+- jQuery
 
-### How to Play
-1. Use the left arrow key to move the character to the left.
-2. Use the right arrow key to move the character to the right.
-3. Press the D key to attack enemies.
-4. Press the space bar to make the character jump.
+Enjoy your adventure in this classic game! 🎮
+
 
 ### Screenshots
 ![ss 1](screenshots/ss1.png)
